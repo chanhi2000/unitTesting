@@ -1,0 +1,29 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+apply from : "dependencies.gradle"
+
+allprojects {
+    buildscript {
+        repositories {
+            google()
+            jcenter()
+        }
+        dependencies {
+            classpath plugin.android
+            classpath plugin.androidJunit5
+        }
+    }
+
+    repositories {
+        google()
+        jcenter()
+    }
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+

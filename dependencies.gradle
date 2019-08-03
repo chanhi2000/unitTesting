@@ -1,0 +1,80 @@
+ext {
+	versions = [
+		gradle : "5.1.1"	
+		,android : "3.4.0"
+		,androidJunit5 : "1.4.2.0"
+		,compileSdk : 28
+		,minSdk : 21
+		,targetSdk : 28
+		,vCode : 1
+		,vName : "1.0"
+		,androidx : "1.0.2"
+		,constraintLayout : "1.1.3"
+		,material : "1.0.0"
+		,room : "2.1.0-beta01"
+		,lifecycle : "2.1.0-alpha04"
+		,reactivestreams : "1.1.1"
+		,rxjava2 : "2.1.1"
+		,rxCallerAdapter : "2.5.0"
+		,dagger : "2.22"
+		,junit : "4.12"
+		,junitJupiter : "5.3.2"
+		,androidxTest : "1.1.0"
+		,androidxArchTest : "2.0.1"
+		,mockito : "2.19.0"
+	]
+
+	plugin = [
+	        android : "com.android.tools.build:gradle:$versions.android"
+			,androidJunit5 : "de.mannodermaus.gradle.plugins:android-junit5:$versions.androidJunit5"
+	]
+    
+    pluginName = [
+            android : "com.android.application"
+            ,androidJunit5 : "de.mannodermaus.android-junit5"
+    ]
+
+	dep = [
+		androidx : [
+			"androidx.appcompat:appcompat:$versions.androidx"
+			,"androidx.constraintlayout:constraintlayout:$versions.constraintLayout"
+		]
+		,material : "com.google.android.material:material:$versions.material"
+		,room : [
+			"androidx.room:room-runtime:$versions.room"
+			,"androidx.room:room-rxjava2:$versions.room"
+		]
+		,roomAnnotation : "androidx.room:room-compiler:$versions.room"
+		,lifecycle : [
+			"androidx.lifecycle:lifecycle-extensions:$versions.lifecycle"
+			,"android.arch.lifecycle:reactivestreams:$versions.reactivestreams"
+		]
+		,junit : "junit:junit:$versions.junit"
+		,androidxTest : [
+			"androidx.test:core:$versions.androidxTest"
+			,"androidx.test:runner:$versions.androidxTest"
+		]
+		,androidxArchTest : "androidx.arch.core:core-testing:$versions.androidxArchTest"
+		,junitJupiter : [
+			"org.junit.jupiter:junit-jupiter-api:$versions.junitJupiter"
+			,"org.junit.jupiter:junit-jupiter-params:$versions.junitJupiter"
+		]
+		,junitJupiterEngine : "org.junit.jupiter:junit-jupiter-engine:$versions.junitJupiter"
+		,mockito : "org.mockito:mockito-core:$versions.mockito"
+		,dagger : "com.google.dagger:dagger:$versions.dagger"
+		,daggerAnnotation : [
+			"com.google.dagger:dagger-compiler:$versions.dagger"
+			,"com.google.dagger:dagger-android-processor:$versions.dagger"
+		]
+		,daggerAndroid : [
+			"com.google.dagger:dagger-android:$versions.dagger"
+			,"com.google.dagger:dagger-android-support:$versions.dagger"
+		]
+		,daggerAndroidAnnotation : "com.google.dagger:dagger-android-processor:$versions.dagger"
+		,rxjava2 : [
+			"io.reactivex.rxjava2:rxjava:$versions.rxjava2"
+			,"io.reactivex.rxjava2:rxandroid:$versions.rxjava2"
+		]
+		,rxCallerAdapter : "com.squareup.retrofit2:adapter-rxjava2:$versions.rxCallerAdapter"
+	]
+}

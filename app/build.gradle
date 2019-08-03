@@ -1,0 +1,86 @@
+apply plugin: pluginName.android
+apply plugin: pluginName.androidJunit5
+
+android {
+    compileSdkVersion versions.compileSdk
+    defaultConfig {
+        applicationId "com.example.markiiimark.unittesting"
+        minSdkVersion versions.minSdk
+        targetSdkVersion versions.targetSdk
+        versionCode versions.vCode
+        versionName versions.vName
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = ["room.schemaLocation": "$projectDir/schemas".toString()]
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    sourceSets {
+        androidTest {
+            java.srcDirs += "src/test-common/java"
+        }
+        test {
+            java.srcDirs += "src/test-common/java"
+        }
+    }
+
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.*'
+        exclude 'META-INF/LICENSE-notice.*'
+        exclude 'META-INF/license.*'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/NOTICE.*'
+        exclude 'META-INF/notice.*'
+        exclude 'META-INF/ASL2.0'
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation dep.androidx
+    implementation dep.material
+    implementation dep.room
+    annotationProcessor dep.roomAnnotation
+    implementation dep.lifecycle
+    
+    // INSTRUMENTATION TESTS
+    androidTestImplementation dep.junit
+    androidTestImplementation dep.androidxTest  // AndroidX test
+    androidTestImplementation dep.androidxArchTest  // Architecture components testing
+     
+    // -------- LOCAL UNIT TESTS (use JUnit5)
+    // JUnit Jupiter
+    implementation dep.junitJupiter
+    testRuntimeOnly dep.junitJupiterEngine
+    testImplementation dep.mockito
+    
+    // Dagger
+    implementation dep.dagger
+    annotationProcessor dep.daggerAnnotation
+    
+    // Dagger Android
+    implementation dep.daggerAndroid
+    annotationProcessor dep.daggerAndroidAnnotation
+    
+    implementation dep.rxjava2 // RxJava & RxAndroid
+    implementation dep.rxCallerAdapter // Retrofit call adapter
+
+}
