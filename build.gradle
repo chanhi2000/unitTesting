@@ -19,6 +19,12 @@ allprojects {
     }
 }
 
+wrapper {
+    gradleVersion = "$versions.gradle"
+    distributionUrl = distributionUrl.replace("bin", "all")
+}
+
+
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }

@@ -82,5 +82,4 @@ dependencies {
     
     implementation dep.rxjava2 // RxJava & RxAndroid
     implementation dep.rxCallerAdapter // Retrofit call adapter
-
 }
